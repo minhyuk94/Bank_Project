@@ -1,9 +1,7 @@
 # Bank_Project
 
 
-## 1
-
-### 1-1
+## 1. Go 설치
 https://github.com/techschool/simplebank <br/>
 https://dbdiagram.io/home <br/>
 https://go.dev/tour/welcome/1 <br/>
@@ -24,5 +22,32 @@ source ~/.bash_profile
 
 go 파일 실행 명령어
 => go run main.go
+
+## 2. Install Docker, Postgres, TablePlus
+Docker
+https://www.docker.com/
+
+Postgres
+=> docker pull postgres:12-alpine
+
+docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
+
+docker exec -it postgres12 psql -U root
+
+Postgres는 로컬에서는 기본적으로 신뢰 상태라서 비밀번호를 묻지않음.
+
+docker logs postgres12
+
+
+Tableplus
+https://tableplus.com/
+
+User : root
+
+Password : secret
+
+DB : root
+
+db/init_schema.up.sql 을 통해 스키마 생성
 
 
