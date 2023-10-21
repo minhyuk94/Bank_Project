@@ -51,3 +51,28 @@ DB : root
 db/init_schema.up.sql 을 통해 스키마 생성
 
 
+## 3. migrate
+migrate install
+
+brew install golang-migrate
+---
+migrate db
+
+migrate create -ext sql -dir db/migration -seq init_schema
+
+docker exec -it postgres12 /bin/sh
+
+createdb --username=root --owner=root simple_bank
+
+psql simple_bank
+---
+Access db
+
+docker exec -it postgres12 psql -U root simple_bank
+---
+
+migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
+
+
+
+
